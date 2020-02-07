@@ -13,7 +13,6 @@ node {
          /* sh 'docker build -t test .' */         
    }
    stage('Email Notification'){
-      mail bcc: '', body: 'welcome to jenkins job', cc: '', from: '', replyTo: '', subject: 'report', to: 'saiprasad169@gmail.com'
+      mail bcc: '', body: 'welcome', cc: '', from: '', replyTo: '', subject: 'report', to: 'saiprasad169@gmail.com'   }
    }
-   
 }
