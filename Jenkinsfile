@@ -13,7 +13,12 @@ pipeline {
          }  
          success {  
              echo 'This will run only if successful'  
-         }  
+         }
+         failure {
+             emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
+                    to: "${EMAIL_TO}", 
+                    subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+         }
          failure {  
              mail bcc: '', body: 'welcome', cc: '', from: '', replyTo: '', subject: 'report', to: 'saiprasad169@gmail.com';  
          }  
