@@ -10,6 +10,7 @@ node {
              notifyFailed()
                 throw e
      }
+     }
      
      def notifyFailed() {
          emailext (
@@ -20,4 +21,4 @@ node {
        subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'somu9009@gmail.com'
        )
      }
-}
+
