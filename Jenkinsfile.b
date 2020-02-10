@@ -1,10 +1,11 @@
 node {
 	 
 	 try{
+	    notifyFailed()
             mv "kubectl apply -f kube-dev.yml"
          }
          
-         catchError(e) {
+         catch(e) {
              
               currentBuild.result = "FAILED"
              notifyFailed()
