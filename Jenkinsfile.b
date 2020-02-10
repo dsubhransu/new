@@ -14,7 +14,7 @@ node {
      }
      
      def notifyFailed() {
-         emailext (
+         mail (
         attachLog: true, 
         body: "${currentBuild.result}: ${BUILD_URL}", 
         compressLog: false, 
