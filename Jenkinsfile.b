@@ -12,7 +12,7 @@ node {
         body: "Jenkins job for master branch with build number (${env.BUILD_NUMBER}) is ${currentBuild.result},please check the logs attached", 
         compressLog: true, 
         replyTo: 'somu9009@gmail.com',
-        subject: "$SPTARGET Build status alert | ${currentBuild.result}",
+        subject: "Build status alert | ${currentBuild.result}",
         to: 'somu9009@gmail.com'
          
      }
