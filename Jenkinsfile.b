@@ -9,7 +9,7 @@ node {
               currentBuild.result = "FAILED"
                 throw e
      } finally {
-         mail  attachLog: true, 
+         emailext  attachLog: true, 
         body: "${currentBuild.result}: ${BUILD_URL}", 
         compressLog: false, 
         replyTo: 'somu9009@gmail.com',
