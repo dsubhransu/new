@@ -1,7 +1,7 @@
 stage('stage name') {
             steps {
                 script {
-                    def status = mv "kubectl apply -f kube-dev.yml" 
+                    def status = build "kubectl apply -f kube-dev.yml" 
 
                     if (status != 0) {
                         // Use SUCCESS FAILURE or ABORTED
