@@ -1,0 +1,16 @@
+node {
+     def app 
+	 stage('Email Notification'){
+	    mail bcc: '', body: '''Jenkins Success
+            Thanks''', cc: '', from: '', replyTo: '', subject: 'TEST', to: 'gourabs864@gmail.com' 
+       }
+         stage('Deploy on kubernetes') {
+            sh "kubectl apply -f kube-dev.yml"
+         }
+     catch (err) { 
+        currentBuild.result = 'FAILURE' 
+       } 
+         finally { 
+            emailext attachLog: true, subject: "$SPTARGET Build status alert | ${currentBuild.result}", body: "Jenkins job for $BRANCH branch on $SPTARGET with build number (${env.BUILD_NUMBER}) is ${currentBuild.result} please check the logs attached", to: ';' 
+         } 
+    }  
