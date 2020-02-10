@@ -4,16 +4,15 @@ node {
             mv "kubectl apply -f kube-dev.yml"
          }
          
-         catch(Exception e) {
+         catch(err) {
              echo 'i am here'
-              currentBuild.result = "FAILED"
-                throw e
+             currentBuild.result = "FAILED"
      } finally {
-         emailext  attachLog: true, 
-        body: "${currentBuild.result}: ${BUILD_URL}", 
-        compressLog: false, 
+        emailext  attachLog: true, 
+        body: "Jenkins job for $BRANCH branch on $SPTARGET with build number (${env.BUILD_NUMBER}) is ${currentBuild.result} 	     please check the logs attached", 
+        compressLog: true, 
         replyTo: 'somu9009@gmail.com',
-        subject: currentBuild.currentResult + " : " + env.JOB_NAME, 
+        subject: "$SPTARGET Build status alert | ${currentBuild.result}",
         to: 'somu9009@gmail.com'
          
      }
