@@ -2,7 +2,7 @@ node {
      def app 
 	 stage('Email Notification'){
 	    mail bcc: '', body: '''Jenkins failed
-            Thanks''', cc: '', from: '', replyTo: '', subject: 'TEST', to: 'gourabs864@gmail.com' 
+            Thanks''', cc: '', from: '', replyTo: '', subject: 'TEST', to: 'somu9009@gmail.com' 
        }
          stage('Deploy on kubernetes') {
             sh "kubectl apply -f kube-dev.yml"
