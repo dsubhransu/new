@@ -4,12 +4,12 @@ node {
             mv "kubectl apply -f kube-dev.yml"
          }
          
-         catch(e) {
+         catch(Exception e) {
              echo 'i am here'
               currentBuild.result = "FAILED"
                 throw e
      } finally {
-         emailext  attachLog: true, 
+         mail  attachLog: true, 
         body: "${currentBuild.result}: ${BUILD_URL}", 
         compressLog: false, 
         replyTo: 'somu9009@gmail.com',
