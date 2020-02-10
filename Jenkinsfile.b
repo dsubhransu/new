@@ -4,7 +4,7 @@ node {
             mv "kubectl apply -f kube-dev.yml"
          }
          
-         catch(e) {
+         catchError(e) {
              
               currentBuild.result = "FAILED"
              notifyFailed()
