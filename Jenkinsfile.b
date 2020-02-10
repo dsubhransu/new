@@ -2,7 +2,7 @@ node {
      try{
      def app 
          stage('Deploy on kubernetes') {
-             "kubectl apply -f kube-dev.yml"
+            mv "kubectl apply -f kube-dev.yml"
          }
 	 }
      catch(e) {
