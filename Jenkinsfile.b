@@ -12,7 +12,7 @@ pipeline {
         always {
             emailext attachLog: true,
             compressLog: false,
-            body: "Jenkins job for master with build number (${env.BUILD_NUMBER}) is ${currentBuild.result} please check the logs attached", 
+            body: "Jenkins job for master with build number (${env.BUILD_NUMBER}) is ${currentBuild.result} please check the logs attached(${SCRIPT, template="groovy-html.template"})", 
             subject: currentBuild.currentResult + " : " + env.JOB_NAME, 
             to: 'gourabs864@gmail.com'
         }
